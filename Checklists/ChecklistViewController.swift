@@ -14,13 +14,25 @@ class ChecklistViewController: UITableViewController, AddItemTableViewController
     }
     
     func addItemTableViewController(_ controller: AddItemTableViewController, didFinishAdding item: ChecklistItem) {
-        let newRowIndex = items.count 
+        let newRowIndex = items.count
         items.append(item)
         
         let indexPath = IndexPath(row: newRowIndex, section: 0)
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
         navigationController?.popViewController(animated:true)
+    }
+    func addItemTableViewController(
+        _ controller: AddItemTableViewController,
+        didFinishEditing item: ChecklistItem
+    ){
+    if let index = items.firstIndex(of: item) {
+        let indexPath = IndexPath(row: index, section: 0)
+        if let cell = tableView.cellForRow(at: indexPath) {
+          configureText(for: cell, with: item)
+        }
+    }
+      navigationController?.popViewController(animated: true)
     }
     
     var items = [ChecklistItem]()
@@ -95,11 +107,11 @@ class ChecklistViewController: UITableViewController, AddItemTableViewController
     
     func configureCheckmark( for cell: UITableViewCell, with item: ChecklistItem) {
         let label = cell.viewWithTag(1001) as! UILabel
-          if item.checked {
+        if item.checked {
             label.text = "√"
         } else {
             label.text = ""
-          }
+        }
     }
     func configureText(
         for cell: UITableViewCell,
@@ -129,6 +141,13 @@ class ChecklistViewController: UITableViewController, AddItemTableViewController
         if segue.identifier == "AddItem" {
             let controller = segue.destination as! AddItemTableViewController
             controller.delegate = self
+        } else if segue.identifier == "EditItem" {
+            let controller = segue.destination as! AddItemTableViewController
+            controller.delegate = self
+            if let indexPath = tableView.indexPath(
+                for: sender as! UITableViewCell) {
+                controller.itemToEdit = items[indexPath.row]
+            }
         }
     }
 }

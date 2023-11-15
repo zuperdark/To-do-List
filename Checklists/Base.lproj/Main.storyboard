@@ -50,6 +50,9 @@ FhYWFhYWFhYWFuKImg
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WXL-7H-ZYS" secondAttribute="trailing" constant="20" symbolic="YES" id="xu0-bn-bVK"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Y5K-Jr-M16" kind="show" identifier="EditItem" trigger="accessoryAction" id="dEt-yV-JRz"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -66,7 +69,7 @@ FhYWFhYWFhYWFuKImg
                     </navigationItem>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="860" y="-167.76611694152925"/>
+            <point key="canvasLocation" x="873" y="-168"/>
         </scene>
         <!--Add Item-->
         <scene sceneID="Ycj-VS-CpB">
@@ -136,6 +139,7 @@ FhYWFhYWFhYWFuKImg
         <!--Navigation Controller-->
         <scene sceneID="NqS-Hs-Ibj">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fHl-vJ-IwG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kjc-HT-Nga" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hxr-UH-JmU">
@@ -147,11 +151,13 @@ FhYWFhYWFhYWFuKImg
                         <segue destination="pBx-px-OZZ" kind="relationship" relationship="rootViewController" id="ZbZ-cl-8QY"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fHl-vJ-IwG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-79.200000000000003" y="-167.76611694152925"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dEt-yV-JRz"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
